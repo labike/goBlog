@@ -1,0 +1,11 @@
+[viewer]
+    Title = "Ohayo Blog"
+    Description = "This is ohayo blog"
+    Logo = "https://i1.hdslb.com/bfs/face/f1a9a6574ee70bf669dab307c11b8308a2e730a2.jpg@240w_240h_1c_1s_!web-avatar-nav.avif",
+    Navigation = "/"
+    Bilibili = ""
+    Avatar = "https://i1.hdslb.com/bfs/face/f1a9a6574ee70bf669dab307c11b8308a2e730a2.jpg@240w_240h_1c_1s_!web-avatar-nav.avif",
+    UserName = "Ohayo"
+    UserDesc = "二次元叼毛"
+	
+[system]

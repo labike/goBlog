@@ -1,8 +1,11 @@
 package main
 
 import (
+	"goBlog/models"
+	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 type IndexData struct {
@@ -32,13 +35,37 @@ type IndexData struct {
 // 	t.Execute(w, indexData)
 // }
 
+func index(w http.ResponseWriter, r *http.Request) {
+	t := template.New("index.html")
+	path, _ := os.Getwd()
+
+	home := path + "/template/home.html"
+	header := path + "/template/layout/header.html"
+	footer := path + "/template/layout/footer.html"
+	pagination := path + "/template/layout/pagination.html"
+	personal := path + "/template/layout/personal.html"
+	post := path + "/template/layout/post-list.html"
+	t, _ = template.ParseFiles(
+		path+"/template/index.html",
+		home,
+		header,
+		footer,
+		pagination,
+		personal,
+		post,
+	)
+
+	var homeData = models.HomeResponse{}
+	t.Execute(w, homeData)
+}
+
 func main() {
 	server := http.Server{
 		Addr: "127.0.0.1:8888",
 	}
 
 	http.HandleFunc("/", index)
-	http.HandleFunc("/index.html", homePage)
+	// http.HandleFunc("/index.html", homePage)
 
 	if err := server.ListenAndServe(); err != nil {
 		log.Println(err)
